@@ -20,3 +20,30 @@ spec:
                 name: frontend
                 port:
                   number: 80
+          - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: api-gateway
+            port:
+              number: 8080
+    - host: report.ogfirm.store
+      http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: kyc-report-frontend
+            port:
+              number: 4201
+    - host: admin.ogfirm.store
+      http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: rabbitmq
+            port:
+              number: 15672
