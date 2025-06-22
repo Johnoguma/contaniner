@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: report-frontend
-          image: johnoguma/report-frontend:latest
+          image: johnoguma/report-kyc
           ports:
             - containerPort: 80
             
