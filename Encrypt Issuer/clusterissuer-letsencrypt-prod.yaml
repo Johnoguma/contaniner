@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+spec:
+  acme:
+    # Let’s Encrypt production endpoint
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: admin@ogfirm.store          # <-- change to a real email
+    privateKeySecretRef:
+      name: letsencrypt-prod-account-key
+    solvers:
+      - http01:
+          ingress:
+            class: nginx               # must match your ingressClassName
