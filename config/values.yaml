@@ -43,8 +43,8 @@ grafana:
     nodePort: 32000
   grafana.ini:
     server:
-    root_url: "http://ogfirm.store/grafana/"
-    serve_from_sub_path: true
+      root_url: "%(protocol)s://ogfirm.store/grafana/"
+      serve_from_sub_path: true
   datasources:
     datasources.yaml:
       apiVersion: 1
@@ -54,6 +54,7 @@ grafana:
           access: proxy
           url: http://loki.monitoring.svc.cluster.local:3100
           isDefault: false
+
 
 kubeStateMetrics:
   resources:
