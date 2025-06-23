@@ -1,0 +1,43 @@
+# save as 02-monitoring-ingress.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: monitoring-ingress
+  namespace: monitoring           # ← same namespace where the Services live
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  tls:
+    - hosts:
+        - grafana.ogfirm.store
+        - prometheus.ogfirm.store
+      secretName: monitoring-cert   # cert-manager will create/renew this
+  rules:
+    - host: grafana.ogfirm.store
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: grafana         # Service name in the same namespace
+                port:
+                  number: 3000
+    - host: prometheus.ogfirm.store
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: prometheus      # Service name in the same namespace
+                port:
+                  number: 9090
+          - path: /loki/api/v1/push
+            pathType: Prefix
+            backend:
+              service:
+                name: loki
+                port:
+                  number: 3100
