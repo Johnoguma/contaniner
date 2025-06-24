@@ -67,3 +67,14 @@ spec:
                 name: monitoring-grafana
                 port:
                   number: 80
+
+    - host: eureka.ogfirm.store
+      http:
+        paths:
+          - path: /eureka
+            pathType: Prefix
+            backend:
+              service:
+                name: eureka-server
+                port:
+                  number: 9099
