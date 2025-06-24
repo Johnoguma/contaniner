@@ -27,6 +27,13 @@ spec:
                 name: api-gateway
                 port:
                   number: 8080
+          - path: /eureka
+            pathType: Prefix
+            backend:
+              service:
+                name: eureka-server
+                port:
+                  number: 9099
           - path: /
             pathType: Prefix
             backend:
