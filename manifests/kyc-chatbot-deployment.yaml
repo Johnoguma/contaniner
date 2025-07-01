@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kyc-chatbot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kyc-chatbot
+  template:
+    metadata:
+      labels:
+        app: kyc-chatbot
+    spec:
+      containers:
+        - name: kyc-chatbot
+          image: johnoguma/kyc-chatbot:latest
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kyc-chatbot
+spec:
+  selector:
+    app: kyc-chatbot
+  ports:
+    - port: 80
+      targetPort: 80
+  type: ClusterIP
