@@ -28,4 +28,6 @@ spec:
   ports:
     - port: 8080
       targetPort: 8080
-  type: ClusterIP
+      nodePort: 31235  # You can change this port if needed (30000–32767)
+  type: NodePort
+---

@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: johnoguma/frontend-kyc:latest
+          image: johnoguma/store-kyc:latest
           ports:
             - containerPort: 80
             
