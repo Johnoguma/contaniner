@@ -38,7 +38,7 @@ spec:
                 port:
                   number: 9099
           - path: /chat(/|$)(.*)
-            pathType: Prefix
+            pathType: ImplementationSpecific
             backend:
               service:
                 name: store-service
