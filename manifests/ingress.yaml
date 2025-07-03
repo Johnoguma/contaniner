@@ -37,7 +37,7 @@ spec:
                 name: eureka-server
                 port:
                   number: 9099
-          - path: /chat(/|$)(.*)
+          - path: /chat
             pathType: Prefix
             backend:
               service:
