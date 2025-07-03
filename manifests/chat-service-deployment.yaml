@@ -1,30 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: chat-service
+  name: store-service
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: chat-service
+      app: store-service
   template:
     metadata:
       labels:
-        app: chat-service
+        app: store-service
     spec:
       containers:
         - name: chat-service
-          image: johnoguma/chat-service:latest
+          image: johnoguma/store-service:latest
           ports:
             - containerPort: 8080
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: chat-service
+  name: store-service
 spec:
   selector:
-    app: chat-service
+    app: store-service
   ports:
     - port: 8080
       targetPort: 8080

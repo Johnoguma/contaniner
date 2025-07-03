@@ -3,16 +3,16 @@ kind: Deployment
 metadata:
   name: frontend
   labels:
-    app:  kyc-frontend
+    app:  store-kyc
 spec: 
   replicas: 1
   selector:
     matchLabels:
-      app:  kyc-frontend
+      app:  store-kyc
   template:
     metadata:
       labels:
-        app:  kyc-frontend
+        app:  store-kyc
     spec:
       containers:
         - name: frontend
@@ -29,7 +29,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: kyc-frontend
+    app: store-kyc
   ports:
   - protocol: TCP
     port: 80
@@ -43,7 +43,7 @@ metadata:
 spec:
   type: ClusterIP
   selector:
-    app: kyc-frontend
+    app: store-kyc
   ports:
   - protocol: TCP
     port: 80
